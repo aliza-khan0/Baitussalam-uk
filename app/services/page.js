@@ -10,15 +10,15 @@ const page = () => {
   return (
     <div>
         <Hero2Section
-                subtitle="OUR WORK"
-                title=" Serving Humanity with Compassion "
-                description="Baitussalam UK (Charity No. 1208852) is dedicated to turning compassion into action by empowering vulnerable communities through education, healthcare, food security, and long-term support."
-                
+                subtitle="SERVICES"
+                title=" Turning Generosity into Impact "
+                description="Discover how your support helps us serve vulnerable communities through education, healthcare, food, and more."
+                topLeftLabel="Home / Services"
                 
               />
 
      
-   <section className="flex flex-col lg:flex-row items-stretch justify-between gap-6 lg:gap-12 px-4 sm:px-12 py-20 mt-24">
+   <section className="flex flex-col lg:flex-row items-stretch justify-between gap-6 lg:gap-12 px-4 sm:px-12 py-14 mt-13">
 
   {/* Left Side - Image */}
  <div className="flex-1 flex items-center justify-center bg-white overflow-hidden">
@@ -36,7 +36,7 @@ const page = () => {
         Introduction
       </p>
 
-      <h2 className="text-[#22305B] font-bold text-2xl sm:text-3xl lg:text-4xl mb-4 sm:mb-6">
+      <h2 className="text-[#000000] font-bold text-2xl sm:text-3xl lg:text-4xl mb-4 sm:mb-6">
         Building Hope, Creating Change
       </h2>
 
@@ -56,38 +56,44 @@ const page = () => {
 
       {/* Bullet Points with Image in Blue Circle */}
       <div className="space-y-4 mb-8">
-        {[
-          {
-            img: "/tick.png",
-            title: "Immediate Relief",
-            desc: "Timely support in food, healthcare, and emergency aid when needed.",
-          },
-          {
-            img: "/tick.png",
-            title: "Community Development",
-            desc: "Sustainable programs that empower individuals and families long term.",
-          },
-        ].map((item, idx) => (
-          <div key={idx} className="flex items-start gap-4">
-            {/* Blue Circle with Image */}
-          <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-[#22305B] flex items-center justify-center">
-  <img
-    src={item.img}
-    alt="Icon"
-    className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 object-contain filter invert"
-  />
+  {[
+    {
+      img: "/tick.png",
+      title: "Immediate Relief",
+      desc: "Timely support in food, healthcare, and emergency aid when needed.",
+    },
+    {
+      img: "/tick.png",
+      title: "Community Development",
+      desc: "Sustainable programs that empower individuals and families long term.",
+    },
+  ].map((item, idx) => (
+    <div
+      key={idx}
+      className="flex items-center justify-start gap-3 sm:gap-4"
+    >
+      {/* Blue Circle */}
+      <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#22305B] flex items-center justify-center flex-shrink-0">
+        <img
+          src={item.img}
+          alt="Icon"
+          className="w-3 h-3 sm:w-4 sm:h-4 object-contain filter invert"
+        />
+      </div>
+
+      {/* Title */}
+      <p className="text-[#22305B] font-semibold text-[13px] sm:text-sm md:text-base min-w-[140px]">
+        {item.title}
+      </p>
+
+      {/* Description */}
+      <p className="text-gray-600 text-[11px] sm:text-sm leading-snug">
+        {item.desc}
+      </p>
+    </div>
+  ))}
 </div>
 
-
-
-            {/* Text */}
-            <div>
-              <p className="text-[#22305B] font-semibold text-sm sm:text-base">{item.title}</p>
-              <p className="text-gray-600 text-[11px] sm:text-sm">{item.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
     </div>
 
     {/* Footer Info */}
@@ -111,7 +117,11 @@ const page = () => {
 
 
 
-    <CausesSection/>
+     <CausesSection
+        sectionTitle="FOCUS AREAS"
+        mainHeading="Where We Make a Difference"
+        description="Your support helps us reach the most vulnerable through impactful projects."
+      />
 
      <Storiessection/>
 

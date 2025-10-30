@@ -38,22 +38,26 @@ const page = () => {
     <div>
 
 <Hero2Section
-  subtitle="DONATE TODAY"
-  title="Your Generosity Changes Lives"
-  description="Every donation you give brings food, education, and care to those who need it most. Together, we can create lasting change."
+  subtitle="CAMPAIGNS"
+  title="Together, We Create Change"
+  description="Discover our ongoing campaigns and community events. Your support helps us reach those who need it most."
   buttonText="Donate Now"
   buttonLink="/donation"
+  topLeftLabel="Home / Campaign"
 />
-<section className="flex flex-col lg:flex-row items-stretch justify-between gap-16 px-6 lg:px-20 mt-22">
+
+{/* INTRODUCTION */}
+<section className="flex flex-col lg:flex-row items-stretch justify-between gap-10  px-6 lg:px-20 mt-22">
       
       {/* Left Side - Image */}
-      <div className="flex-1 flex justify-end bg-white rounded-lg overflow-hidden">
+      <div className="flex justify-center lg:justify-end flex-1 bg-white rounded-lg overflow-hidden p-2 sm:p-4">
   <img
     src="/intro.png"
     alt="Mobile hospital"
-    className="w-full max-w-[470px] h-auto object-contain"
+    className="w-full max-w-[400px] sm:max-w-[450px] md:max-w-[500px] lg:max-w-[550px] h-auto object-contain mx-auto"
   />
 </div>
+
 
 
 

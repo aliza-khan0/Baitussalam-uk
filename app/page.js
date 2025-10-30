@@ -10,6 +10,9 @@ import LearnMoreButton from "./components/ui/learnmore";
 import FeaturedCampaign from "./components/Fooddrive";
 import CampaignSection from "./components/Ongoingcampaign";
 import TransformingSection from "./components/TransformingSection";
+import VideoSection from "./components/VideoSection";
+import SuccessStories from "./components/SuccessStories";
+import Humanitysection from "./components/Humanitysection";
 export default function HomePage() {
    const campaignsData = [
   {
@@ -52,66 +55,8 @@ export default function HomePage() {
 <TransformingSection/>
 
 
-{/* setion3 */}
-{/* ⚪ WHITE SECTION */}
-<section className="pt-20 pb-20 px-6 bg-white mt-36">
-  <div className="max-w-[1200px] mx-auto grid gap-12 items-center grid-cols-1 md:grid-cols-2">
-    {/* Left: Image */}
-    <div className="flex justify-center items-center relative">
-      <div className="w-64 h-64 sm:w-72 sm:h-72 md:w-96 md:h-96 lg:w-[37rem] lg:h-[37rem] rounded-full overflow-hidden">
-        <img
-          src="/circleimage.png"
-          alt="About Baitussalam"
-          className="w-full h-full object-cover rounded-full"
-        />
-      </div>
-    </div>
+<Humanitysection/>
 
-    {/* Right: Text */}
-    <div className="max-w-lg">
-      <h5 className="text-red-600 underline decoration-red-600 decoration-2 underline-offset-4 text-sm uppercase mb-3 tracking-wide font-rubik">
-        About Baitussalam UK
-      </h5>
-
-      <h2 className="font-semibold mb-2 text-gray-900 text-2xl sm:text-3xl md:text-4xl leading-[2.5rem] font-rubik">
-        Serving Humanity with Compassion
-      </h2>
-
-      <p className="text-gray-600 font-semibold text-sm mb-3 leading-5">
-        Who we are, what we stand for, and how we serve communities with
-        compassion.
-      </p>
-
-      <p className="text-gray-600 text-sm mb-3 leading-5">
-        Baitussalam UK is a registered charity dedicated to alleviating
-        hardship, empowering individuals, and fostering dignity. Since our
-        establishment, we have been actively working to support vulnerable
-        families across the UK and beyond.
-      </p>
-
-      <p className="text-gray-600 text-sm mb-3 leading-5">
-        Rooted in transparency, accountability, and sincerity, we are committed
-        to making every donation count. Together, with our supporters and
-        volunteers, we transform compassion into action — impacting lives
-        globally.
-      </p>
-
-      <p className="text-gray-400 text-sm mb-4 leading-5">
-        Rooted in transparency, accountability, and sincerity, we are committed
-        to making every donation count. Together, with our supporters and
-        volunteers, we transform compassion into action — impacting lives
-        globally.
-      </p>
-
-      <LearnMoreButton
-        label="Learn More"
-        bgColor="#22305B"
-        textColor="#F5F5F5"
-        navigateTo="/about"
-      />
-    </div>
-  </div>
-</section>
 
 
 {/* section4  */}
@@ -120,51 +65,7 @@ export default function HomePage() {
 
 
 {/* section */}
-
-<section className="relative flex flex-col lg:flex-row items-center justify-center gap-10 py-20 bg-white">
-  {/* Left Overlapping Image */}
-  <div className="w-full lg:w-auto lg:absolute lg:left-[8%] lg:top-1/2 lg:-translate-y-1/2 z-10 flex justify-center">
-    <img
-      src="/successstories.png"
-      alt="Success Stories"
-      className="w-[520px] max-w-full h-[400px] rounded-xl object-cover shadow-lg"
-    />
-  </div>
-
-  {/* Blue background block (Right Side) */}
-  <div className="relative w-full lg:flex-1 bg-[#0a1d3c8a] rounded-tl-[60px] rounded-bl-[60px] p-10 text-white overflow-hidden lg:ml-[28rem] bg-cover bg-center" style={{ backgroundImage: "url('/map.png')" }}>
-    {/* Light Blue Overlay */}
-    <div className="absolute inset-0 bg-[rgba(10,29,60,0.8)] rounded-tl-[60px] rounded-bl-[60px] z-0"></div>
-
-    {/* Text Content */}
-    <div className="relative z-10 pt-11 pb-10 ml-40 text-center lg:text-left">
-      <p className="text-[14px] tracking-wider uppercase text-white mb-3 inline-block border-b-2 border-white pb-1">
-        Our Impact in Action
-      </p>
-
-      <h2 className="text-[27px] font-bold mb-5 leading-[1.3]">
-        Success Stories of Hope <br /> and Change
-      </h2>
-
-      <p className="text-[13px] leading-6 text-[#D7D6D6] mb-5 max-w-[580px] mx-auto lg:mx-0">
-        Behind every donation is a real story of transformation. Families who once
-        struggled to meet their basic needs are now rebuilding their lives with
-        dignity. Children are attending school, receiving regular meals, and
-        dreaming of a brighter future because of your support.
-      </p>
-
-      <p className="text-[13px] leading-6 text-[#D7D6D6] mb-8 max-w-[580px] mx-auto lg:mx-0">
-        Thanks to Baitussalam UK, my children now have access to education and
-        regular meals. This support has given us hope for a brighter tomorrow and
-        the strength to move forward.
-      </p>
-
-      <button className="bg-[#E40D11] text-white px-7 py-3 rounded-full text-[15px] font-rubik cursor-pointer hover:bg-red-700 transition-colors">
-        Donate
-      </button>
-    </div>
-  </div>
-</section>
+<SuccessStories/>
 
 
 
@@ -172,11 +73,13 @@ export default function HomePage() {
 {/* section */}
 <FeaturedCampaign/>
 
+<VideoSection/>
+
 
 
     {/* section */}
 
-   <section className="my-16">
+   <section className="my-16 mb-40">
   {/* 🔹 IMPACT SECTION */}
   <div className="bg-[#22305B] text-white rounded-tr-[100px] rounded-tl-0 py-16 px-5 text-center mx-auto w-[90%] max-w-[1200px] lg:h-[350px]">
     

@@ -1,186 +1,93 @@
-
+// app/blog/page.js
 import Link from "next/link";
 import { blogs } from "../../data/blogs";
+import Hero2Section from "../components/hero2";
 
-export default function BlogsPage() {
+export default function BlogsPage({ searchParams }) {
+  const page = parseInt(searchParams?.page || "1");
+  const perPage = 6;
+  const startIndex = (page - 1) * perPage;
+  const endIndex = startIndex + perPage;
+
+  const visibleBlogs = blogs.slice(0, endIndex);
+
+  const hasMore = blogs.length > endIndex;
+
   return (
-
     <>
+      <Hero2Section
+        subtitle="BLOG"
+        title="Stories That Inspire Compassion"
+        description="Discover how your support is transforming lives through education, healthcare, and community care."
+        topLeftLabel="Home / Blog"
+      />
 
-     <section
-      style={{
-        position: "relative",
-        backgroundImage: "url('/Homehero.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        color: "white",
-        height: "70vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: "center",
-        overflow: "hidden",
-      }}
-    >
-      {/* Full overlay but darker on the left side */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "linear-gradient(to right, rgba(0,0,0,0.75) 25%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.2) 100%)",
-          zIndex: 1,
-        }}
-      ></div>
-
-      <div
-        style={{
-          position: "relative",
-          zIndex: 2,
-          maxWidth: "800px",
-          padding: "0 1rem",
-        }}
-      >
-        <h5
-  style={{
-    color: "#E40D11",
-    textDecoration: "underline",
-    textDecorationColor: "#BC153F",
-    textUnderlineOffset: "4px", // 
-    textTransform: "uppercase",
-    letterSpacing: "0.1em",
-    marginBottom: "0.5rem",
-    fontFamily: "Tahoma",
-    fontSize: "14px",
-    textAlign:"center"
-  }}
->
-  Our Work
-</h5>
-
-
-        <h1
-          style={{
-            fontSize: "42.39px",
-            lineHeight: 1.1,
-            fontFamily: "Rubik, sans-serif",
-            fontWeight: "700",
-            marginBottom: "10px",
-            color: "#FFFFFF",
-          }}
-        >
-         Stories That Inspire Compassion
+      <div className="px-4 sm:px-8">
+        <h1 className="text-2xl sm:text-[2.25rem] font-bold mb-8 mt-16 sm:mt-24 text-left text-black">
+          Our Blogs
         </h1>
 
-        <p
-          style={{
-            marginBottom: "0.75rem",
-            fontFamily: "calibri",
-            color: "#FFFFFF",
-            fontSize: "15px",
-          }}
-        >
-Discover how your support is transforming lives through education, healthcare, and community care.      </p>
+        {/* Blogs container */}
+       <div
+  id="blogs-container"
+  className="flex flex-wrap justify-center sm:justify-start gap-5"
+>
+  {visibleBlogs.map((blog) => (
+    <div
+  key={blog.id}
+  className="
+    flex-none 
+    w-full
+    sm:[width:calc(50%-0.625rem)]
+    md:[width:calc(33.333%-1.25rem)]
+    lg:[width:calc(25%-1.25rem)]
+    h-[430px] 
+    bg-white 
+    rounded 
+    overflow-hidden 
+    flex 
+    flex-col 
+    justify-between
+  "
+>
+
+      <Link href={`/blog/${blog.id}`} className="no-underline flex flex-col h-full">
+        <img
+          src={blog.image}
+          alt={blog.title}
+          className="w-full h-[290px] object-cover cursor-pointer"
+        />
+        <div className="p-4 flex-1">
+          <h4 className="text-base sm:text-[16px] mb-2 text-black">
+            {blog.title}
+          </h4>
+          <p className="text-[10.5px] leading-5 text-black">
+            {blog.content.slice(0, 60)}...
+          </p>
+        </div>
+        <div className="px-4 pb-4">
+          <button className="w-full py-2 text-left text-[#BC153F] rounded cursor-pointer text-[12px]">
+            Read More
+          </button>
+        </div>
+      </Link>
+    </div>
+  ))}
+</div>
 
 
-
-      </div>
-    </section>
-
-
-
- 
-    <div style={{ padding: "2rem" }}>
-      <h1
-        style={{
-          fontSize: "2.25rem",
-          fontWeight: "700",
-          marginBottom: "2rem",
-          textAlign: "center",
-          color: "#000",
-          
-        }}
-      >
-        Our Blogs
-      </h1>
-
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "space-between",
-          gap: "20px",
-          overflow: "hidden",
-          
-        }}
-      >
-        {blogs.map((blog) => (
-          <div
-            key={blog.id}
-            style={{
-              flex: "0 0 32%",
-              height: "430px",
-              backgroundColor: "#ffffffff",
-              borderRadius: "5px",
-              
-              overflow: "hidden",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-            }}
-          >
-           <Link href={`/blog/${blog.id}`} style={{ textDecoration: "none" }}>
-
-              <img
-                src={blog.image}
-                alt={blog.title}
-                style={{
-                  width: "100%",
-                  height: "290px",
-                  objectFit: "cover",
-                  cursor: "pointer",
-                }}
-              />
-              <div style={{ padding: "15px" }}>
-                <h4
-                  style={{
-                    fontSize: "16px",
-                    marginBottom: "8px",
-                    color: "#000000ff",
-                  }}
-                >
-                  {blog.title}
-                </h4>
-                <p style={{ fontSize: "10.5px", color: "#000000ff", lineHeight: "1.4" }}>
-                  {blog.content.slice(0, 60)}...
-                </p>
-              </div>
-              <div style={{ padding: "0 15px 15px 15px" }}>
-                <button
-                  style={{
-                    width: "100%",
-                    padding: "8px 0",
-                    textAlign:"left",
-                    color: "#BC153F",
-                    border: "none",
-                    borderRadius: "5px",
-                    cursor: "pointer",
-                    fontsize:"6px"
-                    
-                  }}
-                >
-                  Read More 
-                </button>
-              </div>
+        {/* Load More Button */}
+        {hasMore && (
+          <div className="text-center mt-6 mb-9">
+            <Link
+              href={`/blog?page=${page + 1}#blogs-container`}
+              className="px-5 py-2 bg-[#BC153F] text-white rounded no-underline"
+            >
+              Load More
             </Link>
           </div>
-        ))}
+        )}
       </div>
-    </div>
-
-
-
-
     </>
   );
 }

@@ -65,7 +65,7 @@ export default function ZakatCalculatorSection() {
 
         {/* Right Side - Calculator */}
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden ">
-          <div className="bg-[#22305B] text-white py-5 px-6 text-2xl  text-center">
+          <div className="bg-[#22305B] text-white py-5 px-6 text-3xl  text-center">
             Zakat Calculator
           </div>
 

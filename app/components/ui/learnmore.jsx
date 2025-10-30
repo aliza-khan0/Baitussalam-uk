@@ -3,15 +3,15 @@
 import { useRouter } from "next/navigation";
 
 export default function LearnMoreButton({
-  label = "Learn More",      // 🔹 default text
-  bgColor = "transparent",   // 🔹 default background
-  textColor = "white",       // 🔹 default text color
-  hoverColor,                // 🔹 hover background color
-  navigateTo,                // 🔹 navigation path
-  onClickAction,             // 🔹 custom function
-  borderColor = "transparent", // 🔹 default border color
-  borderWidth = "1px",         // 🔹 border thickness
-  borderStyle = "solid",       // 🔹 solid / dashed / dotted
+  label = "Learn More",            // Default text
+  bgColor = "transparent",         // Background color
+  textColor = "white",             // Text color
+  hoverColor,                      // Hover background
+  navigateTo,                      // Route
+  onClickAction,                   // Custom action
+  borderColor = "transparent",     // Border color
+  borderWidth = "1px",             // Border thickness
+  borderStyle = "solid",           // Border type
 }) {
   const router = useRouter();
 
@@ -26,28 +26,33 @@ export default function LearnMoreButton({
   };
 
   return (
-    <button
-      onClick={handleClick}
-      style={{
-        backgroundColor: bgColor,
-        color: textColor,
-        padding: "9px 27px",
-        borderRadius: "9999px",
-        border: `${borderWidth} ${borderStyle} ${borderColor}`,
-        cursor: "pointer",
-        transition: "all 0.3s ease",
-        fontFamily: "Rubik, sans-serif",
-        fontWeight: "500",
-        fontSize: "11.5px",
-      }}
-      onMouseOver={(e) => {
-        e.currentTarget.style.backgroundColor = hoverColor || bgColor;
-      }}
-      onMouseOut={(e) => {
-        e.currentTarget.style.backgroundColor = bgColor;
-      }}
-    >
-      {label}
-    </button>
-  );
+   
+  <button
+    onClick={handleClick}
+    className={`
+      text-[10px] sm:text-[11.5px] md:text-[13px]
+      px-4 sm:px-6 md:px-8
+      py-2 sm:py-[9px] md:py-3
+      font-[500]
+      rounded-full
+      transition-all duration-300
+      hover:opacity-90
+    `}
+    style={{
+      backgroundColor: bgColor,
+      color: textColor,
+      border: `${borderWidth} ${borderStyle} ${borderColor}`,
+      fontFamily: "Rubik, sans-serif",
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.backgroundColor = hoverColor || bgColor;
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.backgroundColor = bgColor;
+    }}
+  >
+    {label}
+  </button>
+);
+
 }

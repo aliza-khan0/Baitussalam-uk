@@ -1,3 +1,250 @@
+// "use client";
+// import React from "react";
+
+// const TransformingSection = () => {
+//   const dropdowns = [
+//     ["Services", ["Education", "Healthcare"]],
+//     ["Program", ["Monthly", "Yearly"]],
+//     ["Single Payment", ["Recurring"]],
+//     ["$100", ["$250", "$500"]],
+//     ["Sadaqah", ["Zakat", "Donation"]],
+//   ];
+
+//   const stats = [
+//     { img: "/img1.png", title: "5000+ Meals", desc: "distributed annually" },
+//     { img: "/img2.png", title: "1200+ Children", desc: "supported with education" },
+//     { img: "/img3.png", title: "50+ Community", desc: "projects launched" },
+//     { img: "/img4.png", title: "100+ Volunteers", desc: "engaged" },
+//   ];
+
+//   return (
+//     <section
+//       style={{
+//         position: "relative",
+//         backgroundImage: "url('/sec2.png')",
+//         backgroundSize: "cover",
+//         backgroundPosition: "center",
+//         backgroundRepeat: "no-repeat",
+//         textAlign: "center",
+//         color: "white",
+//         padding: "2rem 1rem 10rem",
+//         borderBottom: "3px solid #BC153F",
+//         overflow: "visible",
+//       }}
+//     >
+//       {/* Blue Overlay */}
+//       <div
+//         style={{
+//           position: "absolute",
+//           inset: 0,
+//           backgroundColor: "rgba(34, 48, 91, 0.95)",
+//           zIndex: 1,
+//         }}
+//       ></div>
+
+//       {/* Main Content */}
+//       <div
+//         style={{
+//           position: "relative",
+//           zIndex: 2,
+//           maxWidth: "1200px",
+//           margin: "0 auto",
+//           width: "100%",
+//         }}
+//       >
+//         {/* Dropdowns and Donate Button */}
+//         <div
+//           style={{
+//             display: "flex",
+//             flexWrap: "wrap",
+//             justifyContent: "center",
+//             gap: "0.8rem",
+//             padding: "0 1rem",
+//             marginBottom: "1.5rem",
+//             marginTop: "1.5rem",
+//           }}
+//         >
+//           {dropdowns.map(([label, options], i) => (
+//             <select
+//               key={i}
+//               defaultValue={options[0]} // ✅ show first option by default
+//               style={{
+//                 backgroundColor: "white",
+//                 color: "black",
+//                 padding: "0.6rem 1.5rem",
+//                 borderRadius: "12px",
+//                 textAlign: "center",
+//                 outline: "none",
+//                 border: "1px solid #ccc",
+//                 cursor: "pointer",
+//                 minWidth: "120px",
+//                 fontSize: "clamp(0.8rem, 2vw, 1rem)",
+//                 fontFamily: "Rubik, sans-serif",
+//               }}
+//             >
+//               {options.map((opt, j) => (
+//                 <option key={j}>{opt}</option>
+//               ))}
+//             </select>
+//           ))}
+//           <button
+//             style={{
+//               backgroundColor: "#BC153F",
+//               color: "white",
+//               padding: "0.6rem 1.8rem",
+//               borderRadius: "9999px",
+//               fontWeight: 500,
+//               fontSize: "clamp(0.9rem, 2vw, 1rem)",
+//               border: "none",
+//               cursor: "pointer",
+//               transition: "background-color 0.3s ease",
+//               fontFamily: "Rubik, sans-serif",
+//             }}
+//           >
+//             Donate Now
+//           </button>
+//         </div>
+
+//         {/* Heading */}
+//         <h3
+//           style={{
+//             fontSize: "clamp(1.2rem, 3vw, 1.8rem)",
+//             fontWeight: 600,
+//             fontFamily: "Rubik, sans-serif",
+//           }}
+//         >
+//           Transforming Lives Through Your Support
+//         </h3>
+//       </div>
+
+//       {/* Stats Circles */}
+//       <div className="stats-container">
+//         {stats.map((item, i) => (
+//           <div key={i} className="stat-item">
+//             <div className="stat-circle">
+//               <img src={item.img} alt={item.title} className="stat-img" />
+//             </div>
+//             <p className="stat-text">
+//               {item.title}
+//               <br />
+//               <span>{item.desc}</span>
+//             </p>
+//           </div>
+//         ))}
+//       </div>
+
+//       {/* ✅ Responsive Styles */}
+//       <style jsx>{`
+//         .stats-container {
+//           position: absolute;
+//           left: 50%;
+//           bottom: -120px;
+//           transform: translateX(-50%);
+//           display: flex;
+//           justify-content: center;
+//           align-items: center;
+//           gap: 5rem;
+//           text-align: center;
+//           z-index: 3;
+//           flex-wrap: nowrap;
+//           flex-direction: row;
+//         }
+
+//         .stat-item {
+//           display: flex;
+//           flex-direction: column;
+//           align-items: center;
+//           text-align: center;
+//           min-width: 120px;
+//         }
+
+//         .stat-circle {
+//           width: clamp(80px, 12vw, 130px);
+//           height: clamp(80px, 12vw, 130px);
+//           border-radius: 50%;
+//           background-color: white;
+//           display: flex;
+//           align-items: center;
+//           justify-content: center;
+//           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+//           overflow: hidden;
+//           border: 2px solid #bc153f;
+//         }
+
+//         .stat-img {
+//           width: 50%;
+//           height: 50%;
+//           object-fit: contain;
+//         }
+
+//         .stat-text {
+//           font-weight: 600;
+//           font-size: clamp(0.9rem, 2vw, 1rem);
+//           margin-top: 0.75rem;
+//           color: black;
+//           line-height: 1.3;
+//         }
+
+//         .stat-text span {
+//           font-weight: 500;
+//           font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+//           color: black;
+//         }
+
+//         @media (max-width: 1024px) {
+//           .stats-container {
+//             bottom: -70px;
+//             flex-wrap: wrap;
+//             gap: 1.5rem;
+//           }
+//         }
+//           /* Tablets & small desktops */
+// @media (min-width: 601px) and (max-width: 1024px) {
+//   .stats-container {
+//     bottom: -90px; /* thoda kam than desktop */
+//     gap: 2rem;     /* gap thoda kam for medium screens */
+//     flex-wrap: wrap; /* wrap so items don’t overflow */
+//   }
+
+//   .stat-item {
+//     min-width: 100px; /* adjust width for tablets */
+//   }
+
+//   section {
+//     padding: 3rem 1rem 8rem; /* adjust padding for medium screens */
+//   }
+// }
+
+
+//         @media (max-width: 600px) {
+//           section {
+//             padding: 4rem 1rem 6rem;
+//           }
+
+//           .stats-container {
+//             position: relative;
+//             left: 0;
+//             bottom: 0;
+//             transform: none;
+//             flex-direction: column;
+//             align-items: center;
+//             justify-content: center;
+//             gap: 1.5rem;
+//             margin: 0.5rem auto 0;
+//             text-align: center;
+//             width: 100%;
+//           }
+
+//           .stat-item {
+//             min-width: 90px;
+//           }
+//         }
+//       `}</style>
+//     </section>
+//   );
+// };
+
+// export default TransformingSection;
 "use client";
 import React from "react";
 
@@ -18,161 +265,243 @@ const TransformingSection = () => {
   ];
 
   return (
-    <section style={{
-      position: "relative",
-      backgroundImage: "url('/sec2.png')",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
-      textAlign: "center",
-      color: "white",
-      padding: "6rem 1rem 10rem", // more bottom padding for stats
-      borderBottom: "3px solid #BC153F",
-      overflow: "visible"
-    }}>
+    <section
+      style={{
+        position: "relative",
+        backgroundImage: "url('/sec2.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        textAlign: "center",
+        color: "white",
+        padding: "2rem 1rem 9rem",
+        borderBottom: "3px solid #BC153F",
+        overflow: "visible",
+      }}
+    >
       {/* Blue Overlay */}
-      <div style={{
-        position: "absolute",
-        inset: 0,
-        backgroundColor: "rgba(34, 48, 91, 0.96)",
-        zIndex: 1
-      }}></div>
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundColor: "rgba(34, 48, 91, 0.95)",
+          zIndex: 1,
+        }}
+      ></div>
 
-      {/* Content */}
-      <div style={{ position: "relative", zIndex: 2, maxWidth: "1200px", margin: "0 auto" }}>
-        <div style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          gap: "12px",
-          padding: "0 1rem",
-          marginBottom: "1.5rem"
-        }}>
+      {/* Main Content */}
+      <div
+        style={{
+          position: "relative",
+          zIndex: 2,
+          maxWidth: "1200px",
+          margin: "0 auto",
+          width: "100%",
+        }}
+      >
+        {/* Dropdowns and Donate Button */}
+        <div
+          className="dropdown-container"
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: "0.8rem",
+            padding: "0 1rem",
+            marginBottom: "1.5rem",
+            marginTop: "1.5rem",
+          }}
+        >
           {dropdowns.map(([label, options], i) => (
-            <select key={i} style={{
-              backgroundColor: "white",
-              color: "black",
-              padding: "0.5rem 2rem 0.5rem 1rem",
-              borderRadius: "14px",
-              textAlign: "center",
-              outline: "none",
-              border: "1px solid #ccc",
-              cursor: "pointer",
-              minWidth: "120px",
-              appearance: "auto"
-            }}>
-              <option>{label}</option>
+            <select
+              key={i}
+              defaultValue={options[0]}
+              className="responsive-dropdown"
+              style={{
+                backgroundColor: "white",
+                color: "black",
+                padding: "0.6rem 1.5rem",
+                borderRadius: "12px",
+                textAlign: "center",
+                outline: "none",
+                border: "1px solid #ccc",
+                cursor: "pointer",
+                minWidth: "120px",
+                fontSize: "clamp(0.8rem, 2vw, 1rem)",
+                fontFamily: "Rubik, sans-serif",
+                transition: "width 0.3s ease",
+              }}
+            >
               {options.map((opt, j) => (
                 <option key={j}>{opt}</option>
               ))}
             </select>
           ))}
-          <button style={{
-            backgroundColor: "#BC153F",
-            color: "white",
-            padding: "0.5rem 1.5rem",
-            borderRadius: "9999px",
-            fontWeight: 400,
-            fontSize: "1rem",
-            border: "none",
-            cursor: "pointer",
-            transition: "background-color 0.3s ease",
-            fontFamily: "Rubik, sans-serif",
-          }}>
+          <button
+            style={{
+              backgroundColor: "#BC153F",
+              color: "white",
+              padding: "0.6rem 1.8rem",
+              borderRadius: "9999px",
+              fontWeight: 500,
+              fontSize: "clamp(0.9rem, 2vw, 1rem)",
+              border: "none",
+              cursor: "pointer",
+              transition: "background-color 0.3s ease",
+              fontFamily: "Rubik, sans-serif",
+            }}
+          >
             Donate Now
           </button>
         </div>
 
-        <h3 style={{
-          fontSize: "clamp(1.2rem, 2vw, 1.8rem)",
-          padding: "1rem 0",
-          fontWeight: 600,
-          fontFamily: "Rubik, sans-serif",
-          color: "white"
-        }}>
+        {/* Heading */}
+        <h3
+          style={{
+            fontSize: "clamp(1.2rem, 3vw, 1.8rem)",
+            fontWeight: 600,
+            fontFamily: "Rubik, sans-serif",
+          }}
+        >
           Transforming Lives Through Your Support
         </h3>
       </div>
 
       {/* Stats Circles */}
-      <div className="stats-container" style={{
-        position: "absolute",
-        left: "50%",
-        bottom: "-100px",
-        transform: "translateX(-50%)",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: "2rem",
-        textAlign: "center",
-        zIndex: 3,
-        flexWrap: "nowrap"
-      }}>
+      <div className="stats-container">
         {stats.map((item, i) => (
-          <div key={i} style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            textAlign: "center",
-            minWidth: "120px"
-          }}>
-            <div style={{
-              width: "clamp(80px, 12vw, 128px)",
-              height: "clamp(80px, 12vw, 128px)",
-              borderRadius: "50%",
-              backgroundColor: "white",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
-              overflow: "hidden",
-              border: "2px solid #BC153F"
-            }}>
-              <img src={item.img} alt={item.title} style={{
-                width: "50%",
-                height: "50%",
-                objectFit: "contain"
-              }} />
+          <div key={i} className="stat-item">
+            <div className="stat-circle">
+              <img src={item.img} alt={item.title} className="stat-img" />
             </div>
-            <p style={{
-              fontWeight: 600,
-              fontSize: "1rem",
-              marginTop: "0.75rem",
-              color: "black",
-              lineHeight: 1.3
-            }}>
-              {item.title}<br/>
-              <span style={{ fontWeight: 500, fontSize: "0.9rem", color: "black" }}>{item.desc}</span>
+            <p className="stat-text">
+              {item.title}
+              <br />
+              <span>{item.desc}</span>
             </p>
           </div>
         ))}
       </div>
 
-      {/* Responsive adjustments */}
-     <style jsx>{`
-  @media (max-width: 1024px) {
-    .stats-container {
-      position: absolute;        /* stays above overlay */
-      left: 50%;
-      top: 70%;                  /* adjust this value to start below heading */
-      transform: translateX(-50%);
-      flex-direction: column;    /* stack vertically */
-      align-items: center;
-      gap: 1.5rem;
-    }
-  }
+      {/* ✅ Responsive Styles */}
+      <style jsx>{`
+        .stats-container {
+          position: absolute;
+          left: 50%;
+          bottom: -120px;
+          transform: translateX(-50%);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 5rem;
+          text-align: center;
+          z-index: 3;
+          flex-wrap: nowrap;
+          flex-direction: row;
+        }
 
-  @media (max-width: 480px) {
-    .stats-container {
-      top: 39%;                  /* fine-tune for smaller screens */
-    }
-    .stats-container > div {
-      min-width: 100px;
-    }
-  }
-`}</style>
+        .stat-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          min-width: 120px;
+        }
 
+        .stat-circle {
+          width: clamp(80px, 12vw, 130px);
+          height: clamp(80px, 12vw, 130px);
+          border-radius: 50%;
+          background-color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+          overflow: hidden;
+          border: 2px solid #bc153f;
+        }
 
+        .stat-img {
+          width: 50%;
+          height: 50%;
+          object-fit: contain;
+        }
+
+        .stat-text {
+          font-weight: 600;
+          font-size: clamp(0.9rem, 2vw, 1rem);
+          margin-top: 0.75rem;
+          color: black;
+          line-height: 1.3;
+        }
+
+        .stat-text span {
+          font-weight: 500;
+          font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+          color: black;
+        }
+
+        @media (max-width: 1024px) {
+          .stats-container {
+            bottom: -70px;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+          }
+        }
+
+        @media (min-width: 601px) and (max-width: 1024px) {
+          .stats-container {
+            bottom: 17px;
+            gap: 2rem;
+            flex-wrap: wrap;
+          }
+          .stat-item {
+            min-width: 100px;
+          }
+          section {
+            padding: 3rem 1rem 8rem;
+            min-height: 610px;
+          }
+          .stat-text,
+          .stat-text span {
+            color: white;
+          }
+        }
+
+        /* 📱 Small Screens - dropdown width balanced */
+        @media (max-width: 600px) {
+          .responsive-dropdown {
+            width: 45%;
+          }
+
+          .dropdown-container {
+            gap: 0.6rem;
+          }
+
+          section {
+            padding: 4rem 1rem 6rem;
+          }
+
+          .stats-container {
+            position: relative;
+            left: 0;
+            bottom: 0;
+            transform: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 0.5rem auto 0;
+            text-align: center;
+            width: 100%;
+          }
+
+          .stat-text,
+          .stat-text span {
+            color: white;
+          }
+        }
+      `}</style>
     </section>
   );
 };

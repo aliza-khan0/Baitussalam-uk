@@ -5,9 +5,9 @@ export default function VisionSection({
   subTitle = "Vision",
   title = "Our Vision",
   paragraphs = [
-    "Our vision is to build a world where dignity, opportunity, and compassion are not privileges but rights enjoyed by every human being. We aspire to create a future where children have access to quality education, families no longer suffer from hunger, and healthcare is accessible to all, regardless of their financial situation.",
-    "We envision societies that are resilient in times of crisis, empowered through knowledge, and supported by sustainable systems that uplift entire communities. With a focus on both immediate relief and long-term development, our vision extends beyond charity — it is about fostering environments of fairness, inclusivity, and shared prosperity.",
-    "Ultimately, we see a future where humanity stands united in service and care, ensuring that generations to come inherit a world rooted in justice, kindness, and hope."
+    "Our vision is to build a world where dignity, opportunity, and compassion are not privileges but rights enjoyed by every human being. We aspire to create a future where children have access to quality education, families no .",
+    "We envision societies that are resilient in times of crisis, empowered through knowledge, and supported by sustainable systems that uplift entire communities. With a focus on both immediate relief and long-term .",
+    "Ultimately, we see a future where humanity stands united in service and care"
   ],
   largeImage = "/vision.png",
 }) {

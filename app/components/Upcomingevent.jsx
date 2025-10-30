@@ -1,8 +1,17 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
+import dynamic from "next/dynamic";
+import { causesData } from "../causes/causesData";
 
-const Upcomingevent = () => {
+// Dynamically import the DonationModal (to avoid SSR issues)
+const DonationModal = dynamic(() => import("../components/Donationform"), {
+  ssr: false,
+});
+
+export default function Upcomingevent() {
   const [visibleCount, setVisibleCount] = useState(3);
+  const [showDonateForm, setShowDonateForm] = useState(false);
+  const [selectedCampaign, setSelectedCampaign] = useState(null);
 
   const campaigns = [
     {
@@ -12,12 +21,12 @@ const Upcomingevent = () => {
       location: "Karachi",
       locationDesc: "Helping local communities in need.",
       date: "June 2025",
-      dateDesc: " 12th June, 2025",
+      dateDesc: "12th June, 2025",
     },
     {
       img: "/ramadan2.png",
       title: "Community Iftar",
-      desc: "Free medical check-ups, medicine distribution, and health awareness sessions for underprivileged communities. Help us extend healthcare access to those who need it most.",
+      desc: "Join our community iftar to feed the needy and bring people together this Ramadan season.",
       location: "Lahore",
       locationDesc: "Downtown Iftar arrangements.",
       date: "April 2025",
@@ -26,202 +35,118 @@ const Upcomingevent = () => {
     {
       img: "/charity2.png",
       title: "Volunteer Orientation",
-      desc: "Free medical check-ups, medicine distribution, and health awareness sessions for underprivileged communities. Help us extend healthcare access to those who need it most.",
+      desc: "Orientation session for new volunteers to join hands in social welfare and community service.",
       location: "Islamabad",
       locationDesc: "Orientation session for new volunteers.",
       date: "May 2025",
-      dateDesc: " 22nd May, 2025",
+      dateDesc: "22nd May, 2025",
     },
     {
       img: "/education.png",
       title: "Education Support",
-      desc: "Free medical check-ups, medicine distribution, and health awareness sessions for underprivileged communities. Help us extend healthcare access to those who need it most.",
+      desc: "Help children receive quality education by donating books and supplies for the upcoming school year.",
       location: "Hyderabad",
       locationDesc: "School supplies distribution event.",
       date: "July 2025",
-      dateDesc: " 5th July, 2025",
+      dateDesc: "5th July, 2025",
     },
-    
-    {
-      img: "/charity2.png",
-      title: "Volunteer Orientation",
-      desc: "Free medical check-ups, medicine distribution, and health awareness sessions for underprivileged communities. Help us extend healthcare access to those who need it most.",
-      location: "Islamabad",
-      locationDesc: "Orientation session for new volunteers.",
-      date: "May 2025",
-      dateDesc: " 22nd May, 2025",
-    },
-    {
-      img: "/charity2.png",
-      title: "Volunteer Orientation",
-      desc: "Free medical check-ups, medicine distribution, and health awareness sessions for underprivileged communities. Help us extend healthcare access to those who need it most.",
-      location: "Islamabad",
-      locationDesc: "Orientation session for new volunteers.",
-      date: "May 2025",
-      dateDesc: " 22nd May, 2025",
-    },
-   
-    
   ];
 
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + 3);
   };
 
+  const handleDonateClick = (campaignTitle) => {
+    setSelectedCampaign(campaignTitle);
+    setShowDonateForm(true);
+  };
+
   return (
-    <section style={{ padding: "40px 20px", maxWidth: "1200px", margin: "0 auto" }}>
+    <section className="py-10 px-5 md:px-10 max-w-[1200px] mx-auto">
       {/* Section Heading */}
-      <div style={{ textAlign: "center", marginBottom: "40px" }}>
-        <p
-          style={{
-            color: "#E40D11",
-            textTransform: "uppercase",
-            letterSpacing: "1px",
-            fontSize: "13px",
-            fontWeight: "600",
-            marginBottom: "8px",
-            textDecoration: "underline",
-            textDecorationColor: "#BC153F",
-            textUnderlineOffset: "6px",
-          }}
-        >
+      <div className="text-center mb-10">
+        <p className="text-[#E40D11] uppercase tracking-wide text-[13px] font-semibold mb-2 underline decoration-[#BC153F] decoration-2 underline-offset-[6px]">
           Upcoming Events
         </p>
-        <h2 style={{ fontSize: "28px", fontWeight: "700", marginBottom: "10px" }}>
-          Join Our Upcoming Events
-        </h2>
-        <p style={{ maxWidth: "420px", fontSize: "13px", color: "#555", margin: "0 auto" }}>
+        <h2 className="text-[28px] font-bold mb-2">Join Our Upcoming Events</h2>
+        <p className="max-w-[420px] text-[13px] text-[#555] mx-auto font-semibold">
           Your support helps us reach the most vulnerable through impactful projects.
         </p>
       </div>
 
       {/* Cards */}
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          gap: "60px",
-        }}
-      >
-        {campaigns.slice(0, visibleCount).map((item, index) => (
-          <div
-            key={index}
-            style={{
-              width: "300px",
-              borderTopLeftRadius:"15px",
-              borderTopRightRadius:"15px",
-              borderBottomRightRadius:"15px",
-              overflow: "hidden",
-              backgroundColor: "white",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              textAlign: "left",
-              
-            }}
-          >
-            {/* Image */}
-            <img
-              src={item.img}
-              alt={item.title}
-              style={{
-                width: "100%",
-                height: "180px",
-                objectFit: "cover",
-              }}
-            />
+      <div className="flex flex-wrap justify-center gap-4 sm:gap-8 md:gap-12 lg:gap-[60px] px-2 sm:px-4 md:px-6">
+  {campaigns.slice(0, visibleCount).map((item, index) => (
+    <div
+      key={index}
+      className="w-[90%] sm:w-[300px] bg-white rounded-tl-[15px] rounded-tr-[15px] rounded-br-[15px] overflow-hidden flex flex-col justify-between text-left shadow-md hover:shadow-lg transition"
+    >
+      {/* Image */}
+      <img
+        src={item.img}
+        alt={item.title}
+        className="w-full h-[200px] sm:h-[180px] object-cover"
+      />
 
-            {/* Content */}
-            <div style={{ padding: "20px", backgroundColor: "#F9F9F9", flexGrow: 1 }}>
-              <h3 style={{ fontSize: "19px", marginBottom: "6px" }}>{item.title}</h3>
-              <p style={{ fontSize: "11px", color: "#555", marginBottom: "10px", lineHeight: "1.4" }}>
-                {item.desc}
-              </p>
+      {/* Content */}
+      <div className="p-5 bg-[#F9F9F9] flex-1">
+        <h3 className="text-[20px] sm:text-[23px] mb-1">{item.title}</h3>
+        <p className="text-[12px] sm:text-[11px] text-[#555] mb-3 leading-[1.4]">
+          {item.desc}
+        </p>
 
-              {/* Location & Date Row */}
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "flex-start",
-                  marginBottom: "2px",
-                }}
-              >
-                <div>
-                  <h5
-                    style={{
-                      fontSize: "11px",
-                      fontWeight: "600",
-                      color: "#5C5C5C",
-                      marginBottom: "3px",
-                    }}
-                  >
-                    {item.location}
-                  </h5>
-                  <p style={{ fontSize: "11px", color: "#5C5C5C", margin: "0" }}>
-                    {item.locationDesc}
-                  </p>
-                </div>
-
-                <div style={{ textAlign: "left" }}>
-                  <h5
-                    style={{
-                      fontSize: "11px",
-                      fontWeight: "600",
-                      color: "#5C5C5C",
-                      marginBottom: "3px",
-                    }}
-                  >
-                    {item.date}
-                  </h5>
-                  <p style={{ fontSize: "11px", color: "#666", margin: "0" }}>{item.dateDesc}</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Button at the bottom */}
-            <div style={{backgroundColor:"#F9F9F9"}}>
-              <button
-                style={{
-                  backgroundColor: "#22305B",
-                  color: "white",
-                  padding: "8px 26px",
-                  border: "none",
-                  borderBottomRightRadius:"8px",
-                  borderTopRightRadius:"8px",
-                  fontSize: "14px",
-                  cursor: "pointer",
-                }}
-              >
-                Donate Now
-              </button>
-            </div>
+        {/* Location & Date */}
+        <div className="flex justify-between items-start mb-1">
+          <div>
+            <h5 className="text-[12px] sm:text-[11px] font-semibold text-[#5C5C5C] mb-[3px]">
+              {item.location}
+            </h5>
+            <p className="text-[11px] text-[#5C5C5C] m-0">{item.locationDesc}</p>
           </div>
-        ))}
+          <div className="text-left">
+            <h5 className="text-[12px] sm:text-[11px] font-semibold text-[#5C5C5C] mb-[3px]">
+              {item.date}
+            </h5>
+            <p className="text-[11px] text-[#666] m-0">{item.dateDesc}</p>
+          </div>
+        </div>
       </div>
+
+      {/* Button */}
+      <div className="bg-[#F9F9F9] flex justify-start">
+        <button
+          onClick={() => handleDonateClick(item.title)}
+          className="bg-[#22305B] text-white px-[26px] py-[8px] text-[14px] rounded-tr-[8px] rounded-br-[8px] hover:opacity-90 transition"
+        >
+          Donate Now
+        </button>
+      </div>
+    </div>
+  ))}
+</div>
+
 
       {/* Load More Button */}
       {visibleCount < campaigns.length && (
-        <div style={{ textAlign: "center", marginTop: "40px" }}>
+        <div className="text-center mt-10">
           <button
             onClick={handleLoadMore}
-            style={{
-              backgroundColor: "#BC153F",
-              color: "white",
-              padding: "8px 28px",
-              border: "none",
-              borderRadius: "14px",
-              fontSize: "13px",
-              cursor: "pointer",
-            }}
+            className="bg-[#BC153F] text-white px-8 py-2 rounded-lg text-sm hover:bg-[#a11236] transition"
           >
             Load More
           </button>
         </div>
       )}
+
+      {/* ✅ Donation Modal */}
+      {showDonateForm && (
+        <DonationModal
+          open={showDonateForm}
+          setOpen={setShowDonateForm}
+          selectedCampaign={selectedCampaign}
+          causesData={causesData}
+        />
+      )}
     </section>
   );
-};
-
-export default Upcomingevent;
+}

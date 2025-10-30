@@ -16,6 +16,7 @@ export const causesData = [
     slug: "healthcare",
     title: "Healthcare",
     description: "Medical aid for vulnerable communities.",
+    sectwoimg:"/education3.png",
     heroImage: "/healthcare.png",
     impact: "Provided free medical checkups to 300 people.",
     shade: "rgba(0,0,0,0.45)" // dark overlay
@@ -23,6 +24,7 @@ export const causesData = [
   {
     slug: "foodsecurity",
     title: "Food Security",
+    sectwoimg:"/education3.png",
     description: "Providing food for those in need.",
     heroImage: "/foodsecurity.png",
     impact: "Distributed 2000 food packages last year.",

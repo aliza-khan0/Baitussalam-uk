@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import LearnMoreButton from "./ui/learnmore";
 import DonationModal from "./Donationform";
+import { causesData } from "../causes/causesData";
 
 const CampaignSection = ({
   title = "Current Campaigns You Can Support",
@@ -17,14 +18,15 @@ const CampaignSection = ({
   const handleLoadMore = () => setVisibleCount((prev) => prev + 3);
 
   return (
-    <section className="py-20 px-5 md:px-10 lg:px-20 bg-white">
+   <section className="mb-10 px-5 md:px-10 lg:px-20 bg-white py-10 sm:py-16 md:py-20 lg:py-24">
+
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <p className="text-[#E40D11] uppercase tracking-wide text-sm underline underline-offset-4 decoration-[#BC153F] mb-2 ml-2">
           {sectionLabel}
         </p>
 
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-14 mb-10 mx-2">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-1 mb-10 mx-2">
           <h2 className="text-xl sm:text-3xl md:text-3xl font-bold text-gray-900">
             {title}
           </h2>
@@ -34,38 +36,36 @@ const CampaignSection = ({
         </div>
 
         {/* Cards Section */}
-        <div className="flex flex-wrap justify-center gap-10 sm:gap-12 md:gap-16">
-          {campaigns.slice(0, visibleCount).map((item, index) => (
-            <div
-              key={index}
-              className="w-[280px] sm:w-[300px] bg-transparent rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
-            >
-              <img
-                src={item.img}
-                alt={item.title}
-                className="w-full h-44 object-cover rounded-t-xl"
-              />
-              <div className="bg-white border border-gray-300 border-t-0 rounded-b-xl p-5">
-                <h3 className="text-lg font-semibold mb-2 text-gray-800">
-                  {item.title}
-                </h3>
-                {item.desc && (
-                  <p className="text-sm text-gray-600 mb-1">{item.desc}</p>
-                )}
-                {item.date && (
-                  <p className="text-sm text-gray-500 mb-4">Date: {item.date}</p>
-                )}
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-10">
+  {campaigns.slice(0, visibleCount).map((item, index) => (
+    <div
+      key={index}
+      className="w-[90%] sm:w-[300px] bg-transparent rounded-xl  overflow-hidden hover:shadow-lg transition-shadow duration-300"
+    >
+      <img
+        src={item.img}
+        alt={item.title}
+        className="w-full h-48 object-cover rounded-t-xl"
+      />
+      <div className="bg-white border border-gray-400 border-t-0 rounded-b-xl p-5">
+        <h1 className="text-lg font-Rubik mb-2 text-gray-800">{item.title}</h1>
 
-                <LearnMoreButton
-                  label={buttonText}
-                  bgColor="#22305B"
-                  textColor="white"
-                  onClickAction={() => setShowDonateForm(true)}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
+        {item.desc && <p className="text-xs font-semibold text-gray-600 mb-1">{item.desc}</p>}
+        {item.date && (
+          <p className="text-xs font-semibold text-gray-500 mb-4">Date: {item.date}</p>
+        )}
+
+        <LearnMoreButton
+          label={buttonText}
+          bgColor="#22305B"
+          textColor="white"
+          onClickAction={() => setShowDonateForm(true)}
+        />
+      </div>
+    </div>
+  ))}
+</div>
+
 
         {/* Load More Button */}
         {showLoadMore && visibleCount < campaigns.length && (
@@ -96,7 +96,7 @@ const CampaignSection = ({
             >
               ✕
             </button>
-            <DonationModal open={showDonateForm} setOpen={setShowDonateForm} />
+            <DonationModal open={showDonateForm} setOpen={setShowDonateForm}  causesData={causesData}  />
           </div>
         </div>
       )}

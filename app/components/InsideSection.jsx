@@ -35,22 +35,30 @@ const InsideSection = () => {
     <section className="bg-white py-20 px-6 md:px-12">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="flex flex-wrap justify-between items-start gap-6 mb-12">
-          <div className="flex-1 min-w-[250px]">
-            <h5 className="text-[#E40D11] font-semibold uppercase mb-2 tracking-wider ml-4 border-b-2 border-[#BC153F] inline-block pb-1">
-              Insights & Updates
-            </h5>
-            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 ml-4">
-              Stay Informed, Stay Inspired
-            </h2>
-          </div>
+      <div className="max-w-6xl mx-auto">
+  {/* Header */}
+  <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-8 px-3 sm:px-6 md:px-8 lg:px-3 mb-8">
+    {/* Left Section - Headings */}
+    <div className="flex-1 min-w-[250px] text-left">
+      <h5 className="text-[#E40D11] font-semibold uppercase mb-2 tracking-wider border-b-2 border-[#BC153F] inline-block pb-1">
+        Insights & Updates
+      </h5>
+      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-gray-900 mt-2">
+        Stay Informed, Stay Inspired
+      </h2>
+    </div>
 
-          <p className="flex-1 text-gray-600 max-w-sm text-sm font-semibold text-left">
-            Explore stories, articles, and updates from our community. Learn more
-            about our causes, discover impact highlights, and get inspired by the
-            voices of change.
-          </p>
-        </div>
+    {/* Right Section - Paragraph */}
+    <p className="flex-1 text-gray-600 text-xs sm:text-sm font-semibold lg:text-sm md:text-base leading-relaxed text-left max-w-md">
+      Explore stories, articles, and updates from our community. Learn more
+      about our causes, discover impact highlights, and get inspired by the
+      voices of change.
+    </p>
+  </div>
+</div>
+
+
+
 
         {/* Blog Layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
@@ -69,7 +77,7 @@ const InsideSection = () => {
                 <img
                   src={blog.image}
                   alt={blog.title}
-                  className="w-20 h-20 rounded-full object-cover"
+                  className="w-17 h-17   rounded-full object-cover"
                 />
                 <div className="text-left">
                   <p className="text-[10px] uppercase font-semibold text-[#727479] mb-1">
